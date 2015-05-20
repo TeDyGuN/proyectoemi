@@ -1,0 +1,129 @@
+*
+{
+    box-sizing: border-box;
+}
+body{
+
+
+    font-size: 16px;
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    background: #174E62 url('../images/page.png') top center no-repeat fixed;
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.24) 0, rgba(53, 166, 208, 0.36) 250px) no-repeat, url('../images/page.png') top center no-repeat, -webkit-linear-gradient(top, #07171D 0, #2887A9 250px) no-repeat;
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.24) 0, rgba(53, 166, 208, 0.36) 250px) no-repeat, url('../images/page.png') top center no-repeat, -moz-linear-gradient(top, #07171D 0, #2887A9 250px) no-repeat;
+    background: -o-linear-gradient(top, rgba(0, 0, 0, 0.24) 0, rgba(53, 166, 208, 0.36) 250px) no-repeat, url('../images/page.png') top center no-repeat, -o-linear-gradient(top, #07171D 0, #2887A9 250px) no-repeat;
+    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.24) 0, rgba(53, 166, 208, 0.36) 250px) no-repeat, url('../images/page.png') top center no-repeat, -ms-linear-gradient(top, #07171D 0, #2887A9 250px) no-repeat;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.24) 0, rgba(53, 166, 208, 0.36) 250px) no-repeat, url('../images/page.png') top center no-repeat, linear-gradient(to bottom, #07171D 0, #2887A9 250px) no-repeat;
+    -svg-background: linear-gradient(top, rgba(0, 0, 0, 0.24) 0, rgba(53, 166, 208, 0.36) 250px) no-repeat, url('../images/page.png') top center no-repeat, linear-gradient(top, #07171D 0, #2887A9 250px) no-repeat;
+    background-attachment: fixed, fixed, fixed !important;
+
+}
+.clasebody
+{
+
+    max-width: 1000px;
+    text-align:center;
+    margin-left:auto ;
+    margin-right:auto;
+}
+#headeremi{
+    background: #e5e5e5;
+}
+#imglogo{
+    padding-top: 1.7em;
+    padding-bottom: 1em;
+}
+#imgsis{
+    float: right;
+}
+/*
+#headeremi #logo_emi{
+    position: absolute;
+    top: 1em;
+    left: 0;
+}
+#headeremi #logo_emi img{
+    width: 150px;
+    height: 55px;
+}
+#headeremi #logo_sistemas{
+    position: absolute;
+    top: 0.5em;
+    right: 0;
+}
+#headeremi #logo_sistemas img{
+    width: 75px;
+}
+*/
+#headeremi h1 {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 0.5em 0 1.5em 0;
+    margin-left: 1em;
+    margin-bottom: 0.3em;
+    color: #144571;
+    text-align: center;
+}
+nav ul li:hover{
+    background: #F6BB09;
+    background: -webkit-linear-gradient(top, #D4A108 0, #F6BB09 20%, #F6BB09 80%, #D4A108 100%) no-repeat;
+    background: -moz-linear-gradient(top, #D4A108 0, #F6BB09 20%, #F6BB09 80%, #D4A108 100%) no-repeat;
+    background: -o-linear-gradient(top, #D4A108 0, #F6BB09 20%, #F6BB09 80%, #D4A108 100%) no-repeat;
+    background: -ms-linear-gradient(top, #D4A108 0, #F6BB09 20%, #F6BB09 80%, #D4A108 100%) no-repeat;
+    background: linear-gradient(to bottom, #D4A108 0, #F6BB09 20%, #F6BB09 80%, #D4A108 100%) no-repeat;
+    -svg-background: linear-gradient(top, #D4A108 0, #F6BB09 20%, #F6BB09 80%, #D4A108 100%) no-repeat;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #ffffff;
+}
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    color: white;
+}
+/*
+}
+nav
+{
+    text-decoration: none;
+    padding: 0 6em 0 0;
+    position: relative;
+    overflow: hidden;
+    background: #144571;
+    background: -webkit-linear-gradient(top, #154875 0, #154B79 40%, #154B79 80%, #0D2D4A 100%) no-repeat;
+    background: -moz-linear-gradient(top, #154875 0, #154B79 40%, #154B79 80%, #0D2D4A 100%) no-repeat;
+    background: -o-linear-gradient(top, #154875 0, #154B79 40%, #154B79 80%, #0D2D4A 100%) no-repeat;
+    background: -ms-linear-gradient(top, #154875 0, #154B79 40%, #154B79 80%, #0D2D4A 100%) no-repeat;
+    background: linear-gradient(to bottom, #154875 0, #154B79 40%, #154B79 80%, #0D2D4A 100%) no-repeat;
+    -svg-background: linear-gradient(top, #154875 0, #154B79 40%, #154B79 80%, #0D2D4A 100%) no-repeat;
+}
+
+nav ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+nav ul #ingreso{
+    position: absolute;
+    right: 0;
+    top: -0.1em;
+    background: #F6BB09;
+    color: #144571;
+}
+nav ul #registro{
+    position: absolute;
+    right: 7em;
+    top: -0.1em;
+    background: #F6BB09;
+    color: #144571;
+}
+nav ul li a{
+    font-size: 1.1em;
+    display: block;
+    color: white;
+
+    text-decoration: none;
+    padding: 0.5em 2em;
+    margin: 0 1em;
+}
+/*nav ul li a:hover {
+}*/
