@@ -36,23 +36,30 @@
                     <li><a href="#" class="glyphicon glyphicon-book">Recursos</a></li>
                     <li><a href="#" class="glyphicon glyphicon-question-sign">F.A.Q</a></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" role="button" aria-expanded="false">Ingresar <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <form class="navbar-form navbar-right">
-                                <div class="form-group">
-                                    <input type="text" placeholder="Email" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" placeholder="Password" class="form-control">
-                                </div>
-                                <button type="submit" class="btn btn-success hacecaso">Sign in</button>
-                            </form>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="glyphicon glyphicon-list-alt">Registrarse</a></li>
-                </ul>
+                @if(Auth::guest())
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" role="button" aria-expanded="false">Ingresar <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <form class="navbar-form navbar-right">
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Email" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" placeholder="Password" class="form-control">
+                                    </div>
+                                    <button type="submit" class="btn btn-success hacecaso">Sign in</button>
+                                </form>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="glyphicon glyphicon-list-alt">Registrarse</a></li>
+                    </ul>
+                @else
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{{ url('/auth/logout') }}">Logout</a></li>
+                    </ul>
+                @endif
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
