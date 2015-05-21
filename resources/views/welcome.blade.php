@@ -40,20 +40,37 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" role="button" aria-expanded="false">Ingresar <span class="caret"></span></a>
+
                             <ul class="dropdown-menu" role="menu">
-                                <form class="navbar-form navbar-right">
+                                <form class="navbar-form navbar-right" role="form" method="POST" action="{{ url('/auth/login') }}">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="form-group">
-                                        <input type="text" placeholder="Email" class="form-control">
+                                        <div class="col-md-6">
+                                            <input type="email" placeholder="Email" class="form-control" name="email" value="{{ old('email') }}">
+                                        </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" placeholder="Password" class="form-control">
+                                        <div class="col-md-6">
+                                            <input type="password"  placeholder="Contraseña" class="form-control" name="password">
+                                        </div>
                                     </div>
-                                    <button type="submit" class="btn btn-success hacecaso">Sign in</button>
+                                    <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="remember">Recuerdame
+                                                </label>
+                                            </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary">Login</button>
+                                        <a class="btn btn-link" href="{{ url('/password/email') }}">Olvidaste tu Contraseña?</a>
+                                    </div>
                                 </form>
-                            </ul>
-                        </li>
+                                </ul>
+                            </li>
                         <li><a href="#" class="glyphicon glyphicon-list-alt">Registrarse</a></li>
-                    </ul>
+                        </ul>
                 @else
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
