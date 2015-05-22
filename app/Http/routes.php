@@ -15,8 +15,9 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
+Route::post('login', 'LoginController@LoginForm'); // Verificar datos
+Route::get('logout', 'LoginController@getLogout');
+Route::get('registro', 'LoginController@register');
+Route::post('register', 'LoginController@RegisterForm');
+
 Route::any('/', array('as' => 'index', 'uses' => 'WelcomeController@index'));

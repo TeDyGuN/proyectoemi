@@ -9,6 +9,8 @@
     <meta name="description" content= @yield('descripcion')/>
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/estilos.css') }}" rel="stylesheet">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
@@ -56,11 +58,11 @@
                 </ul>
                 @if(Auth::guest())
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
+                        <li class="dropdown" id="parajavear">
                             <a href="#" class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" role="button" aria-expanded="false">Ingresar <span class="caret"></span></a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <form class="navbar-form navbar-right" role="form" method="POST" action="{{ url('/auth/login') }}">
+                                <form class="navbar-form navbar-right" role="form" method="POST" action="{{ url('login') }}">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="form-group">
                                         <div class="col-md-6">
@@ -82,17 +84,35 @@
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary">Login</button>
+
+                                        @if(Session::has('error_message'))
+                                            <script>
+                                                var $jnav = $('#parajavear');
+                                                $jnav.addClass('open');
+                                            </script>
+                                            <div class="alert alert-danger">
+                                                Datos Incorrectos
+                                            </div>
+                                        @endif
                                         <a class="btn btn-link" href="{{ url('/password/email') }}">Olvidaste tu Contraseña?</a>
                                     </div>
                                 </form>
                             </ul>
                         </li>
-                        <li><a href="{{ url('/auth/register') }}" class="glyphicon glyphicon-list-alt">Registrarse</a></li>
+                        <li><a href="{{ url('registro') }}" class="glyphicon glyphicon-list-alt">Registrarse</a></li>
                     </ul>
                 @else
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="{{ url('/auth/logout') }}">Logout</a></li>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->first_name.' '.Auth::user()->last_name}}<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <li><a href="{{ url('logout') }}">Logout</a></li>
+                                    </div>
+                                </div>
+                            </ul>
+                        </li>
                     </ul>
                 @endif
             </div><!-- /.navbar-collapse -->
@@ -100,7 +120,6 @@
     </nav>
 	@yield('content')
 	<!-- Scripts -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
