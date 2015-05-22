@@ -19,4 +19,4 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
-Route::resource('login', 'AutentificacionController');
+Route::any('/', array('as' => 'index', 'uses' => 'WelcomeController@index'));

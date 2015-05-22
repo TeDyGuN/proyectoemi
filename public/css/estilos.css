@@ -17,6 +17,24 @@ body{
     background-attachment: fixed, fixed, fixed !important;
 
 }
+.colorazul{
+    color: #144571;
+    font-size: 1em;
+    font-weight: bold;
+}
+.coloramarillo{
+    color: #F6BB09;
+    font-size: 1em;
+    font-weight: bold;
+}
+.panel-default > .panel-heading
+{
+
+    color:  #F6BB09;
+    font-size: 1em;
+    font-weight: bold;
+    background: #144571;
+}
 .clasebody
 {
 
