@@ -41,6 +41,15 @@
 							</div>
 						</div>
 
+                        <div class="form-group">
+                            <label class="col-md-4 control-label colorazul">Tipo de Usuario</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="type">
+                                    <option value="user">Estudiante</option>
+                                    <option value="docente">Docente</option>
+                                </select>
+                            </div>
+                        </div>
 						<div class="form-group">
 							<label class="col-md-4 control-label colorazul">Contraseña</label>
 							<div class="col-md-3">
@@ -48,7 +57,6 @@
 							</div>
                             <label class="col-md-3 coloramarillo">Maximo 6 Caracteres</label>
 						</div>
-
 						<div class="form-group">
 							<label class="col-md-4 control-label colorazul">Confirmar Contraseña</label>
 							<div class="col-md-3">

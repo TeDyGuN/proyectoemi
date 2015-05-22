@@ -97,6 +97,10 @@ nav ul li:hover{
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
     color: white;
 }
+.navbar-form .form-control{
+    border: 3px solid #F6BB09;
+
+}
 /*
 }
 nav

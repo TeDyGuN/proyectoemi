@@ -19,5 +19,5 @@ Route::post('login', 'LoginController@LoginForm'); // Verificar datos
 Route::get('logout', 'LoginController@getLogout');
 Route::get('registro', 'LoginController@register');
 Route::post('register', 'LoginController@RegisterForm');
-
+route::get('sucesfullregister', 'LoginController@post_register');
 Route::any('/', array('as' => 'index', 'uses' => 'WelcomeController@index'));

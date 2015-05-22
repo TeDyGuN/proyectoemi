@@ -61,12 +61,12 @@
                         <li class="dropdown" id="parajavear">
                             <a href="#" class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" role="button" aria-expanded="false">Ingresar <span class="caret"></span></a>
 
-                            <ul class="dropdown-menu" role="menu">
+                            <ul class="dropdown-menu" style="background: #e5e5e5" role="menu">
                                 <form class="navbar-form navbar-right" role="form" method="POST" action="{{ url('login') }}">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="form-group">
                                         <div class="col-md-6">
-                                            <input type="email" placeholder="Email" class="form-control" name="email" value="{{ old('email') }}">
+                                            <input type="email" placeholder="Email" class="form-control bordeadoamarillo" name="email" value="{{ old('email') }}">
                                         </div>
                                     </div>
                                     <div class="form-group">

@@ -40,7 +40,7 @@ class LoginController extends Controller{
     }
     public function RegisterForm(Request $request)
     {
-        $credentials = $request->only('first_name', 'last_name', 'email', 'password', 'password_confirmation');
+        $credentials = $request->only('first_name', 'last_name', 'email', 'password', 'password_confirmation', 'type' ,'_token');
         $validator = Validator::make($credentials,
             [
                 'first_name' => 'required|max:255',
@@ -58,6 +58,6 @@ class LoginController extends Controller{
         $request['password'] = bcrypt($request['password']);
         $user = new User($request->all());
         $user->save();
-        return Redirect::intended('/home');
+        return view('sucesfullregister');
     }
 }
