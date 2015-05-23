@@ -34,7 +34,7 @@
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="index2.html" class="logo"><b>EMI</b>SISTEMAS</a>
+        <a href="index2.html" class="logo"><b>EMI </b>SISTEMAS</a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
             <!-- Sidebar toggle button-->
@@ -161,7 +161,7 @@
             <ul class="sidebar-menu">
                 <li class="header">MAIN NAVIGATION</li>
                 <li class="active treeview">
-                    <a href="#">
+                    <a href="{{ url('home') }}">
                         <i class="fa fa-dashboard"></i> <span>Panel Principal</span>
                     </a>
                 </li>
@@ -171,7 +171,11 @@
                         <small class="label pull-right bg-red">3</small>
                     </a>
                 </li>
-                <li><a href="documentation/index.html"><i class="fa fa-book"></i> Documentacion</a></li>
+                <li>
+                    <a href="{{url('calendar')}}">
+                        <i class="fa fa-book"></i> <span>Documentacion</span>
+                    </a>
+                </li>
             </ul>
         </section>
         <!-- /.sidebar -->
@@ -207,11 +211,15 @@
                                 <div class='external-event bg-aqua'>Do homework</div>
                                 <div class='external-event bg-light-blue'>Work on UI design</div>
                                 <div class='external-event bg-red'>Sleep tight</div>
-                                <div class="checkbox">
-                                    <label for='drop-remove'>
-                                        <input type='checkbox' id='drop-remove' />
-                                        Eliminar despues de Soltar
-                                    </label>
+                                <div>
+                                    <div class="checkbox">
+                                        <label for='drop-remove'>
+                                            <input type='checkbox' id='drop-remove' />
+                                            Eliminar despues de Soltar
+                                        </label>
+                                        <button class="btn btn-default btn-sm" style="float: right" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></button>
+                                    </div>
+
                                 </div>
                             </div>
                         </div><!-- /.box-body -->
@@ -247,7 +255,16 @@
                             </div><!-- /input-group -->
                         </div>
                     </div>
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <h4 class="box-title">Guardar Eventos</h4>
+                        </div>
+                        <div class="box-body">
+                            <button id="add-new-event" type="button" class="btn btn-primary btn-flat center-block">Guardar</button>
+                        </div><!-- /.box-body -->
+                    </div><!-- /. box -->
                 </div><!-- /.col -->
+
                 <div class="col-md-9">
                     <div class="box box-primary">
                         <div class="box-body no-padding">
@@ -339,27 +356,27 @@
             //Random default events
             events: [
                 {
-                    title: 'All Day Event',
+                    title: 'Estudiar Redes',
                     start: new Date(y, m, 1),
                     backgroundColor: "#f56954", //red
                     borderColor: "#f56954" //red
                 },
                 {
-                    title: 'Long Event',
+                    title: 'Practica de Base de  Datos',
                     start: new Date(y, m, d - 5),
                     end: new Date(y, m, d - 2),
                     backgroundColor: "#f39c12", //yellow
                     borderColor: "#f39c12" //yellow
                 },
                 {
-                    title: 'Meeting',
+                    title: 'Laboratorio de Redes',
                     start: new Date(y, m, d, 10, 30),
                     allDay: false,
                     backgroundColor: "#0073b7", //Blue
                     borderColor: "#0073b7" //Blue
                 },
                 {
-                    title: 'Lunch',
+                    title: 'Almuerzo',
                     start: new Date(y, m, d, 12, 0),
                     end: new Date(y, m, d, 14, 0),
                     allDay: false,
@@ -367,7 +384,7 @@
                     borderColor: "#00c0ef" //Info (aqua)
                 },
                 {
-                    title: 'Birthday Party',
+                    title: 'Fiesta de Cumple',
                     start: new Date(y, m, d + 1, 19, 0),
                     end: new Date(y, m, d + 1, 22, 30),
                     allDay: false,
@@ -375,7 +392,7 @@
                     borderColor: "#00a65a" //Success (green)
                 },
                 {
-                    title: 'Click for Google',
+                    title: 'Este es un link',
                     start: new Date(y, m, 28),
                     end: new Date(y, m, 29),
                     url: 'http://google.com/',
@@ -391,7 +408,7 @@
                 var originalEventObject = $(this).data('eventObject');
 
                 // we need to copy it, so that multiple events don't have a reference to the same object
-                var copiedEventObject = $.extend({}, originalEventObject);
+                var copiedEventObject = $.extend({}, originalEventObject);;
 
                 // assign it the date that was reported
                 copiedEventObject.start = date;
@@ -402,7 +419,6 @@
                 // render the event on the calendar
                 // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
                 $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
-
                 // is the "remove after drop" checkbox checked?
                 if ($('#drop-remove').is(':checked')) {
                     // if so, remove the element from the "Draggable Events" list
@@ -411,7 +427,6 @@
 
             }
         });
-
         /* ADDING EVENTS */
         var currColor = "#3c8dbc"; //Red by default
         //Color chooser button
@@ -436,13 +451,14 @@
             event.css({"background-color": currColor, "border-color": currColor, "color": "#fff"}).addClass("external-event");
             event.html(val);
             $('#external-events').prepend(event);
-
             //Add draggable funtionality
             ini_events(event);
 
             //Remove event from text input
             $("#new-event").val("");
         });
+        //textojson = JSON.stringify($('#calendar').fullCalendar().events());
+        //console.log($('#external-events div.external-event'));
     });
 </script>
 

@@ -1,5 +1,5 @@
 @extends('admin')
-
+@section('titulo', 'Panel de Control')
 @section('headerpage')
     <section class="content-header">
         <h1>

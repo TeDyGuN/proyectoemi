@@ -35,7 +35,11 @@
                     <small class="label pull-right bg-red">3</small>
                 </a>
             </li>
-            <li><a href="documentation/index.html"><i class="fa fa-book"></i> Documentacion</a></li>
+            <li>
+                <a href="{{url('calendar')}}">
+                    <i class="fa fa-book"></i> <span>Documentacion</span>
+                </a>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->
