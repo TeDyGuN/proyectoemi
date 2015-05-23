@@ -3,5 +3,4 @@
 @section('descripcion' ,'Pagina Web para Registro y Control de Trabajos de Investigacion en la EMI')
 @section('content')
 
-
 @endsection

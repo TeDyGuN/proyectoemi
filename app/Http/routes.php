@@ -12,12 +12,11 @@
 */
 
 Route::get('/', 'WelcomeController@index');
-
 Route::get('home', 'HomeController@index');
-
 Route::post('login', 'LoginController@LoginForm'); // Verificar datos
 Route::get('logout', 'LoginController@getLogout');
 Route::get('registro', 'LoginController@register');
 Route::post('register', 'LoginController@RegisterForm');
 route::get('sucesfullregister', 'LoginController@post_register');
+route::get('calendar', 'AdminController@getCalendar');
 Route::any('/', array('as' => 'index', 'uses' => 'WelcomeController@index'));
