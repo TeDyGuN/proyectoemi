@@ -19,4 +19,6 @@ Route::get('registro', 'LoginController@register');
 Route::post('register', 'LoginController@RegisterForm');
 route::get('sucesfullregister', 'LoginController@post_register');
 route::get('calendar', 'AdminController@getCalendar');
+Route::post('calendar/getcalendar', 'FullCalendarController@calendarevents');
+Route::get('calendar/jsondigamos', 'FullCalendarController@mostrar');
 Route::any('/', array('as' => 'index', 'uses' => 'WelcomeController@index'));

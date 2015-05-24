@@ -259,9 +259,12 @@
                         <div class="box-header with-border">
                             <h4 class="box-title">Guardar Eventos</h4>
                         </div>
-                        <div class="box-body">
-                            <button id="add-new-event" type="button" class="btn btn-primary btn-flat center-block">Guardar</button>
-                        </div><!-- /.box-body -->
+                        <form role="form" id="form-fechas" method="POST" action="{{ url('calendar/getcalendar') }}">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" id="fechas" name="fechas" value="MODIFICAR">
+                            <button id="boton-guardar" type="submit" class="btn btn-primary btn-flat center-block">Guardar</button>
+                        </form>
+
                     </div><!-- /. box -->
                 </div><!-- /.col -->
 
@@ -276,6 +279,7 @@
             </div><!-- /.row -->
         </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
+
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
             <b>Version</b> 2.0
@@ -308,6 +312,7 @@
 <!-- Page specific script -->
 <script type="text/javascript">
     $(function () {
+        var base_url = 'http://localhost/proyectoemi/public';
         /* initialize the external events
          -----------------------------------------------------------------*/
         function ini_events(ele) {
@@ -468,7 +473,22 @@
             //Remove event from text input
             $("#new-event").val("");
         });
-        console.log($('#calendar').fullCalendar('clientEvents'));
+        var data = $('#calendar').fullCalendar('clientEvents');
+        console.log(JSON.stringify(data[0]));
+        var data1 = 'hola';
+        $('#boton-guardar').click(function(){
+
+            $('#fechas').attr('value', data[0].title);
+
+            /*var form = $('#form-fechas');
+            var url = form.attr('action');
+            var data2 = form.serialize();
+            $.post(url, data2, function(result){
+                alert(result);
+            });*/
+        });/*
+        event.preventDefault();
+        ;*/
         //textojson = JSON.stringify($('#calendar').fullCalendar().events());
         //console.log($('#external-events div.external-event'));
     });
