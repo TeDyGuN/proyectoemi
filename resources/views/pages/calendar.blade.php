@@ -206,11 +206,11 @@
                         <div class="box-body">
                             <!-- the events -->
                             <div id='external-events'>
-                                <div class='external-event bg-green'>Lunch</div>
-                                <div class='external-event bg-yellow'>Go home</div>
-                                <div class='external-event bg-aqua'>Do homework</div>
-                                <div class='external-event bg-light-blue'>Work on UI design</div>
-                                <div class='external-event bg-red'>Sleep tight</div>
+                                <div class='external-event bg-green'>Guardia</div>
+                                <div class='external-event bg-yellow'>Pagar Mensualidad</div>
+                                <div class='external-event bg-aqua'>Estudiar de Automatas</div>
+                                <div class='external-event bg-light-blue'>Presentar Proyecto</div>
+                                <div class='external-event bg-red'>Examen Materia Militar</div>
                                 <div>
                                     <div class="checkbox">
                                         <label for='drop-remove'>
@@ -308,7 +308,6 @@
 <!-- Page specific script -->
 <script type="text/javascript">
     $(function () {
-
         /* initialize the external events
          -----------------------------------------------------------------*/
         function ini_events(ele) {
@@ -319,7 +318,6 @@
                 var eventObject = {
                     title: $.trim($(this).text()) // use the element's text as the event title
                 };
-
                 // store the Event Object in the DOM element so we can get to it later
                 $(this).data('eventObject', eventObject);
 
@@ -353,6 +351,10 @@
                 week: 'Semana',
                 day: 'Dia'
             },
+            monthNames : ['Enero' , 'Febrero' , 'Marzo' , 'Abril' , 'Mayo' , 'Junio' , 'Julio' ,
+                'Agosto' , 'Septiembre' , 'Octubre' , 'Noviembre' , 'Diciembre' ],
+            dayNamesShort : ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+            firstDay : 1,
             //Random default events
             events: [
                 {
@@ -401,11 +403,13 @@
                 }
             ],
             editable: true,
-            droppable: true, // this allows things to be dropped onto the calendar !!!
+            droppable: true,
+            draggable: true,
             drop: function (date, allDay) { // this function is called when something is dropped
 
                 // retrieve the dropped element's stored Event Object
                 var originalEventObject = $(this).data('eventObject');
+
 
                 // we need to copy it, so that multiple events don't have a reference to the same object
                 var copiedEventObject = $.extend({}, originalEventObject);;
@@ -415,7 +419,11 @@
                 copiedEventObject.allDay = allDay;
                 copiedEventObject.backgroundColor = $(this).css("background-color");
                 copiedEventObject.borderColor = $(this).css("border-color");
-
+                /*console.log(copiedEventObject.title);
+                console.log(copiedEventObject.start);
+                console.log(copiedEventObject.allDay);
+                console.log(copiedEventObject.backgroundColor);
+                console.log(copiedEventObject.borderColor);*/
                 // render the event on the calendar
                 // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
                 $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
@@ -427,6 +435,9 @@
 
             }
         });
+
+
+
         /* ADDING EVENTS */
         var currColor = "#3c8dbc"; //Red by default
         //Color chooser button
@@ -457,9 +468,11 @@
             //Remove event from text input
             $("#new-event").val("");
         });
+        console.log($('#calendar').fullCalendar('clientEvents'));
         //textojson = JSON.stringify($('#calendar').fullCalendar().events());
         //console.log($('#external-events div.external-event'));
     });
+
 </script>
 
 </body>
