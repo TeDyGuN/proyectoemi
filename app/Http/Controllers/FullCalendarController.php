@@ -7,7 +7,13 @@ class FullCalendarController extends Controller{
 
     public function calendarevents(Request $request)
     {
-        $credentials = $request->only('fechas');
-        var_dump($credentials);
+        $json = json_encode($request->only('fechas'));
+        if($request->Json())
+        {
+           echo($json);
+        }
+
+        //$credentials = $request->only('fechas');
+        //var_dump($credentials);
     }
 }

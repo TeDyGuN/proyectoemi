@@ -359,6 +359,7 @@
             monthNames : ['Enero' , 'Febrero' , 'Marzo' , 'Abril' , 'Mayo' , 'Junio' , 'Julio' ,
                 'Agosto' , 'Septiembre' , 'Octubre' , 'Noviembre' , 'Diciembre' ],
             dayNamesShort : ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+            dayNames : ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
             firstDay : 1,
             //Random default events
             events: [
@@ -414,14 +415,12 @@
 
                 // retrieve the dropped element's stored Event Object
                 var originalEventObject = $(this).data('eventObject');
-
-
                 // we need to copy it, so that multiple events don't have a reference to the same object
                 var copiedEventObject = $.extend({}, originalEventObject);;
 
                 // assign it the date that was reported
                 copiedEventObject.start = date;
-                copiedEventObject.allDay = allDay;
+                copiedEventObject.allDay = true;
                 copiedEventObject.backgroundColor = $(this).css("background-color");
                 copiedEventObject.borderColor = $(this).css("border-color");
                 /*console.log(copiedEventObject.title);
@@ -468,24 +467,44 @@
             event.html(val);
             $('#external-events').prepend(event);
             //Add draggable funtionality
-            ini_events(event);
+            ini_events(event);+
 
             //Remove event from text input
             $("#new-event").val("");
         });
-        var data = $('#calendar').fullCalendar('clientEvents');
-        console.log(JSON.stringify(data[0]));
-        var data1 = 'hola';
+
         $('#boton-guardar').click(function(){
+            $('#calendar').fullCalendar('rerenderEvents');
+            var eventsFromCalendar = $('#calendar').fullCalendar('clientEvents');
+            for (var i = 0; i < eventsFromCalendar.length; i++) {
+                delete eventsFromCalendar[i].source;
+            }
+            var fecha = function (titulo, start, backcolor, allday, bordercolor, id) {
+                this.titulo = titulo;
+                this.start = start;
+                this.backcolor = backcolor;
+                this.allday = allday;
+                this.bordecolor = bordercolor;
+                this.id = id;
+            }
+            var fechas = [];
+            for(var i = 0; i < eventsFromCalendar.length; i++)
+            {
+                var titulo = eventsFromCalendar[i].title;
+                var start = eventsFromCalendar[i].start['_d'];
+                var backcolor = eventsFromCalendar[i].backgroundColor;
+                var allday = eventsFromCalendar[i].allDay;
+                var bordercolor = eventsFromCalendar[i].borderColor;
+                var id = eventsFromCalendar[i]._id;
+                var nose = new fecha(titulo, start, backcolor, allday, bordercolor, id);
+                fechas.push(nose);
+            }
+            for (var i = 0; i < fechas.length; i++) {
+                delete fechas[i].source;
+            }
+            textojson = JSON.stringify(fechas);
+            $('#fechas').attr('value', textojson);
 
-            $('#fechas').attr('value', data[0].title);
-
-            /*var form = $('#form-fechas');
-            var url = form.attr('action');
-            var data2 = form.serialize();
-            $.post(url, data2, function(result){
-                alert(result);
-            });*/
         });/*
         event.preventDefault();
         ;*/
