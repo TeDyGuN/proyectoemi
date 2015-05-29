@@ -22,3 +22,12 @@ route::get('calendar', 'AdminController@getCalendar');
 Route::post('calendar/getcalendar', 'FullCalendarController@calendarevents');
 Route::get('calendar/jsondigamos', 'FullCalendarController@mostrar');
 Route::any('/', array('as' => 'index', 'uses' => 'WelcomeController@index'));
+Route::controllers([
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
+]);
+Route::group(['prefix'=> 'admin', 'namespace' => 'Admin'], function()
+{
+    Route::Resource('users', 'UsersController');
+});
+

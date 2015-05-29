@@ -29,6 +29,10 @@ class LoginController extends Controller{
         }
         return Redirect::back()->with('error_message', 'Invalid data')->withInput();
     }
+    public function getId()
+    {
+        return Auth::user()->id;
+    }
     public function getLogout()
     {
         Auth::logout();

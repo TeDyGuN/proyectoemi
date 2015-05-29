@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <title> @yield('titulo') </title>
 
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico"/>
+    <link rel="icon" type="image/x-icon" href="{{asset('images/favicon.ico')}}"/>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
     <link href="{{ asset('/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -13,6 +13,7 @@
     <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/plugins/fullcalendar/fullcalendar.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/plugins/fullcalendar/fullcalendar.print.css') }}" rel="stylesheet" type="text/css" media="print"/>
+    <link href="{{ asset('/plugins/datatables/dataTables.bootstrap.css') }}" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="{{ asset('/dist/css/AdminLTE.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -62,7 +63,8 @@
 
 <!-- jQuery 2.1.3 -->
 
-<script src="{{asset('/plugins/jQuery/jQuery-2.1.4.min.js')}}" type="text/javascript"></script>
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <!-- Bootstrap 3.3.2 JS -->
 <script src="{{ asset('/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
 <!-- Morris.js charts -->
@@ -70,9 +72,7 @@
 <script src="{{ asset('/plugins/morris/morris.min.js') }}" type="text/javascript"></script>
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-    $.widget.bridge('uibutton', $.ui.button);
-</script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js" type="text/javascript"></script>
 <script src="{{asset('/plugins/fullcalendar/fullcalendar.min.js')}}" type="text/javascript"></script>
 <!-- Sparkline -->

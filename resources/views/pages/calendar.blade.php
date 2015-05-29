@@ -217,7 +217,7 @@
                                             <input type='checkbox' id='drop-remove' />
                                             Eliminar despues de Soltar
                                         </label>
-                                        <button class="btn btn-default btn-sm" style="float: right" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></button>
+                                        <button class="btn btn-default btn-sm" id="trash" style="float: right" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></button>
                                     </div>
 
                                 </div>
@@ -261,7 +261,7 @@
                         </div>
                         <form role="form" id="form-fechas" method="POST" action="{{ url('calendar/getcalendar') }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="hidden" id="fechas" name="fechas" value="MODIFICAR">
+                            <input type="hidden" id="fechas" name="fechas" value='MODIFICAR'>
                             <button id="boton-guardar" type="submit" class="btn btn-primary btn-flat center-block">Guardar</button>
                         </form>
 
@@ -411,6 +411,25 @@
             editable: true,
             droppable: true,
             draggable: true,
+            eventDragStop: function(event,jsEvent,ui ,view) {
+                var trashEl = jQuery('#trash');
+                var ofs = trashEl.offset();
+
+                var x1 = ofs.left;
+                var x2 = ofs.left + trashEl.outerWidth(true);
+                var y1 = ofs.top;
+                var y2 = ofs.top + trashEl.outerHeight(true);
+
+                if (jsEvent.pageX >= x1 && jsEvent.pageX<= x2 &&
+                        jsEvent.pageY>= y1 && jsEvent.pageY <= y2) {
+                    event.borderColor = 'white';
+                    event.backgroundColor = 'white';
+                    $('#calendario').fullCalendar('removeEvents', event._id);
+
+                    $('#calendar').fullCalendar('rerenderEvents');
+
+                }
+            },
             drop: function (date, allDay) { // this function is called when something is dropped
 
                 // retrieve the dropped element's stored Event Object
@@ -439,6 +458,7 @@
 
             }
         });
+
 
 
 
