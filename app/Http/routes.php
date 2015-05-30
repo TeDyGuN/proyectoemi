@@ -18,15 +18,19 @@ Route::get('logout', 'LoginController@getLogout');
 Route::get('registro', 'LoginController@register');
 Route::post('register', 'LoginController@RegisterForm');
 route::get('sucesfullregister', 'LoginController@post_register');
-route::get('calendar', 'AdminController@getCalendar');
+route::get('calendar', 'FullCalendarController@getCalendar');
 Route::post('calendar/getcalendar', 'FullCalendarController@calendarevents');
-Route::get('calendar/jsondigamos', 'FullCalendarController@mostrar');
 Route::any('/', array('as' => 'index', 'uses' => 'WelcomeController@index'));
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
-Route::group(['prefix'=> 'admin', 'namespace' => 'Admin'], function()
+#filtro para el perfil admin
+Route::filter('is_admin', function()
+{
+    if(Auth::user()->type != 'Admin' ) return Redirect::to('/');
+});
+Route::group(['before' => 'is_admin', 'prefix'=> 'admin', 'namespace' => 'Admin'], function()
 {
     Route::Resource('users', 'UsersController');
 });

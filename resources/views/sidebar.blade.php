@@ -35,6 +35,14 @@
                     <small class="label pull-right bg-red">3</small>
                 </a>
             </li>
+            @if(Auth::user()->type == 'Admin')
+            <li>
+                <a href="{{route('admin.users.index')}}">
+                    <i class="fa fa-area-chart"></i> <span>Usuarios Registrados</span>
+                </a>
+            </li>
+
+            @endif
             <li>
                 <a href="{{url('calendar')}}">
                     <i class="fa fa-book"></i> <span>Documentacion</span>

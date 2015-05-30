@@ -13,8 +13,8 @@ class CreateEventosTable extends Migration {
 			$table->increments('id');
             $table->string('titulo_evento',60);
             $table->string('start', 30);
-            $table->string('backgroundColor', 7);
-            $table->string('borderColor', 7);
+            $table->string('backgroundColor', 20);
+            $table->string('borderColor', 20);
             $table->boolean('allDay');
             $table->string('id_eventoCallendar', 6);
             $table->integer('user_id')->unsigned();

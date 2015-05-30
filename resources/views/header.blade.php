@@ -90,7 +90,7 @@
                         <!-- User image -->
                         <div class="form-group">
                             <div class="col-md-2">
-                                <li><a href="{{ url('logout') }}">Salir</a></li>
+                                <li><a href="{{ url('/auth/logout') }}">Salir</a></li>
                             </div>
                         </div>
                     </ul>

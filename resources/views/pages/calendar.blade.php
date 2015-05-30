@@ -171,6 +171,14 @@
                         <small class="label pull-right bg-red">3</small>
                     </a>
                 </li>
+                @if(Auth::user()->type == 'Admin')
+                    <li>
+                        <a href="{{route('admin.users.index')}}">
+                            <i class="fa fa-area-chart"></i> <span>Usuarios Registrados</span>
+                        </a>
+                    </li>
+
+                @endif
                 <li>
                     <a href="{{url('calendar')}}">
                         <i class="fa fa-book"></i> <span>Documentacion</span>
@@ -282,9 +290,9 @@
 
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
-            <b>Version</b> 2.0
+            <b>Version</b> 0.1
         </div>
-        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2015 <a href="#">Ted Carrasco</a>.</strong> All rights reserved.
     </footer>
 </div><!-- ./wrapper -->
 
@@ -317,7 +325,6 @@
          -----------------------------------------------------------------*/
         function ini_events(ele) {
             ele.each(function () {
-
                 // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
                 // it doesn't need to have a start or end
                 var eventObject = {
@@ -362,52 +369,27 @@
             dayNames : ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
             firstDay : 1,
             //Random default events
+
             events: [
-                {
-                    title: 'Estudiar Redes',
-                    start: new Date(y, m, 1),
-                    backgroundColor: "#f56954", //red
-                    borderColor: "#f56954" //red
-                },
-                {
-                    title: 'Practica de Base de  Datos',
-                    start: new Date(y, m, d - 5),
-                    end: new Date(y, m, d - 2),
-                    backgroundColor: "#f39c12", //yellow
-                    borderColor: "#f39c12" //yellow
-                },
+                    @foreach($array as $fecha)
+                    {
+                    title: '{{$fecha->titulo_evento}}',
+                    start: '{{$fecha->start}}',
+                    allDay: '{{$fecha->allDay}}',
+                    backgroundColor: '{{$fecha->backgroundColor}}', //Blue
+                    borderColor: '{{$fecha->borderColor}}'//Blue
+                    },
+                    @endforeach
+            ]
+            /*events: [
                 {
                     title: 'Laboratorio de Redes',
                     start: new Date(y, m, d, 10, 30),
                     allDay: false,
                     backgroundColor: "#0073b7", //Blue
                     borderColor: "#0073b7" //Blue
-                },
-                {
-                    title: 'Almuerzo',
-                    start: new Date(y, m, d, 12, 0),
-                    end: new Date(y, m, d, 14, 0),
-                    allDay: false,
-                    backgroundColor: "#00c0ef", //Info (aqua)
-                    borderColor: "#00c0ef" //Info (aqua)
-                },
-                {
-                    title: 'Fiesta de Cumple',
-                    start: new Date(y, m, d + 1, 19, 0),
-                    end: new Date(y, m, d + 1, 22, 30),
-                    allDay: false,
-                    backgroundColor: "#00a65a", //Success (green)
-                    borderColor: "#00a65a" //Success (green)
-                },
-                {
-                    title: 'Este es un link',
-                    start: new Date(y, m, 28),
-                    end: new Date(y, m, 29),
-                    url: 'http://google.com/',
-                    backgroundColor: "#3c8dbc", //Primary (light-blue)
-                    borderColor: "#3c8dbc" //Primary (light-blue)
                 }
-            ],
+            ]*/,
             editable: true,
             droppable: true,
             draggable: true,

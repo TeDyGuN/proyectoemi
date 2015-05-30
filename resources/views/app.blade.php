@@ -58,61 +58,8 @@
                 </ul>
                 @if(Auth::guest())
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown" id="parajavear">
-                            <a href="#" class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" role="button" aria-expanded="false">Ingresar <span class="caret"></span></a>
-
-                            <ul class="dropdown-menu" style="background: #e5e5e5" role="menu">
-                                <form class="navbar-form navbar-right" role="form" method="POST" action="{{ url('login') }}">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    <div class="form-group">
-                                        <div class="col-md-6">
-                                            <input type="email" placeholder="Email" class="form-control bordeadoamarillo" name="email" value="{{ old('email') }}">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-6">
-                                            <input type="password"  placeholder="Contraseña" class="form-control" name="password">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" name="remember">Recuerdame
-                                            </label>
-                                        </div>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary">Login</button>
-
-                                        @if(Session::has('error_message'))
-                                            <script>
-                                                var $jnav = $('#parajavear');
-                                                $jnav.addClass('open');
-                                            </script>
-                                            <div class="alert alert-danger">
-                                                Datos Incorrectos
-                                            </div>
-                                        @endif
-                                        <a class="btn btn-link" href="{{ url('/password/email') }}">Olvidaste tu Contraseña?</a>
-                                    </div>
-                                </form>
-                            </ul>
-                        </li>
-                        <li><a href="{{ url('registro') }}" class="glyphicon glyphicon-list-alt">Registrarse</a></li>
-                    </ul>
-                @else
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->first_name.' '.Auth::user()->last_name}}<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <div class="form-group">
-                                    <div class="col-md-6">
-                                        <li><a href="{{ url('logout') }}">Logout</a></li>
-                                    </div>
-                                </div>
-                            </ul>
-                        </li>
+                        <li><a href="{{ url('/auth/login') }}" class="glyphicon glyphicon-user">Ingresar</a></li>
+                        <li><a href="{{ url('/auth/register') }}" class="glyphicon glyphicon-list-alt">Registrarse</a></li>
                     </ul>
                 @endif
             </div><!-- /.navbar-collapse -->
