@@ -1,0 +1,45 @@
+//para instalar composer en un proyecto
+rutadelproyecto> composer install
+
+//actualizar un composer.json
+rutadelproyecto> composer update
+
+//CREAR PROYECTO LARAVEL
+ruta de www> composer create-project laravel/laravel nombre_curso
+
+//Cambiar nombre del proyecto 
+rutadelproyecto> php artisan app:name Course
+
+//migrar tablas de base de datos
+rutadelproyecto> php artisan migrate
+
+//actualizar seedes y migraciones
+rutadelproyecto>composer dump-autoload
+
+//migrar campos (Seeds)
+rutadelproyecto> php artisan db:seed
+
+//instalar migraciones
+rutadelproyecto> php artisan migrate:install
+
+//desacer migraciones
+rutadelproyecto> php artisan migrate:rollback
+
+//mostrar todos los comandos artisan
+rutadelproyecto> php artisan lis
+
+//anadir nuevo (migracion)
+rutadelproyecto> php artisan make:migration create_nombreTabla_table
+
+//anadir nuevo (migracion) con Boilerplate
+rutadelproyecto> php artisan make:migration create_nombreTabla_table --create="nombreTabla"
+
+//elimina tabla de una migracion
+rutadelproyecto> php artisan migrate:reset
+
+//vacia datos de las tablas
+rutadelproyecto> php artisan migrate:refresh
+
+//ver Assembler del .exe
+objdump -d app1win.exe | more
+

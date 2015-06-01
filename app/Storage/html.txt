@@ -1,0 +1,11 @@
+//uso de Normalizer
+Normalizer es un script que predefine todos los estilos en los navegadores 
+//Caja
+Objeto en HTML q le permite tener margenes y permiten flotar
+block
+//pading
+margen interno
+//margin
+margen externo
+0 0 0 0
+superior - derecho - inferior - izquierdo

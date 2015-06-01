@@ -168,7 +168,12 @@
                 <li>
                     <a href="{{url('calendar')}}">
                         <i class="fa fa-calendar"></i> <span>Calendario</span>
-                        <small class="label pull-right bg-red">3</small>
+                        <small class="label pull-right bg-red">{{count($array)}}</small>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url('sistema/nuevotrabajo')}}">
+                        <i class="fa fa-file-word-o"></i> <span>Nuevo Trabajo de Investigacion</span>
                     </a>
                 </li>
                 @if(Auth::user()->type == 'Admin')
@@ -320,6 +325,12 @@
 <!-- Page specific script -->
 <script type="text/javascript">
     $(function () {
+        console.log('{{$array[2]->start}}');
+        console.log('{{substr($array[2]->start, 0, -15)}}');
+        console.log('{{substr($array[2]->start, 5, -12)}}');
+        console.log('{{substr($array[2]->start, 8, -9)}}');
+        console.log('{{substr($array[2]->start, 11, -6)}}');
+        console.log('{{substr($array[2]->start, 14, -3)}}');;
         var base_url = 'http://localhost/proyectoemi/public';
         /* initialize the external events
          -----------------------------------------------------------------*/
@@ -374,6 +385,8 @@
                     @foreach($array as $fecha)
                     {
                     title: '{{$fecha->titulo_evento}}',
+                    //start: new Date('{{substr($fecha->start, 0, -15)}}', '{{substr($fecha->start, 5, -12)}}', '{{substr($fecha->start, 8, -9)}}',
+                    //        '{{substr($fecha->start, 11, -6)}}', '{{substr($fecha->start, 14, -3)}}'),
                     start: '{{$fecha->start}}',
                     allDay: '{{$fecha->allDay}}',
                     backgroundColor: '{{$fecha->backgroundColor}}', //Blue
@@ -494,6 +507,7 @@
             {
                 var titulo = eventsFromCalendar[i].title;
                 var start = eventsFromCalendar[i].start['_d'];
+                console.log(start);
                 var backcolor = eventsFromCalendar[i].backgroundColor;
                 var allday = eventsFromCalendar[i].allDay;
                 var bordercolor = eventsFromCalendar[i].borderColor;

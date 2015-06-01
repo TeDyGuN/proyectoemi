@@ -35,6 +35,11 @@
                     <small class="label pull-right bg-red">3</small>
                 </a>
             </li>
+            <li>
+                <a href="{{url('sistema/nuevotrabajo')}}">
+                    <i class="fa fa-file-word-o"></i> <span>Nuevo Trabajo de Investigacion</span>
+                </a>
+            </li>
             @if(Auth::user()->type == 'Admin')
             <li>
                 <a href="{{route('admin.users.index')}}">

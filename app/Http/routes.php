@@ -34,4 +34,21 @@ Route::group(['before' => 'is_admin', 'prefix'=> 'admin', 'namespace' => 'Admin'
 {
     Route::Resource('users', 'UsersController');
 });
+Route::group(['prefix'=> 'sistema', 'namespace' => 'Sistema'], function()
+{
+    Route::get('nuevotrabajo', 'TrabajoController@nuevotrabajo');
+    Route::post('guardar', 'TrabajoController@save');
+    Route::get('storage/{archivo}', function ($archivo) {
+        $public_path = public_path();
+        $url = $public_path.'/storage/'.$archivo;
+        //verificamos si el archivo existe y lo retornamos
+        if (Storage::exists($archivo))
+        {
+            return response()->download($url);
+        }
+        //si no se encuentra lanzamos un error 404.
+        abort(404);
+
+    });
+});
 
