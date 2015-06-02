@@ -35,10 +35,14 @@
                     <small class="label pull-right bg-red">3</small>
                 </a>
             </li>
-            <li>
-                <a href="{{url('sistema/nuevotrabajo')}}">
-                    <i class="fa fa-file-word-o"></i> <span>Nuevo Trabajo de Investigacion</span>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-file-word-o"></i> <span>Trabajo de Investigacion</span>
+                    <i class="fa fa-angle-left pull-right"></i>
                 </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{url('sistema/nuevotrabajo')}}"><i class="fa fa-circle-o"></i>Nuevo Trabajo</a></li>
+                </ul>
             </li>
             @if(Auth::user()->type == 'Admin')
             <li>
@@ -46,10 +50,14 @@
                     <i class="fa fa-area-chart"></i> <span>Usuarios Registrados</span>
                 </a>
             </li>
-
+            <li>
+                <a href="">
+                    <i class="fa fa-area-chart"></i><span>Reportes</span>
+                </a>
+            </li>
             @endif
             <li>
-                <a href="{{url('calendar')}}">
+                <a href="{{url('sistema/documentacion')}}">
                     <i class="fa fa-book"></i> <span>Documentacion</span>
                 </a>
             </li>

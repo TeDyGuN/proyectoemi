@@ -39,6 +39,24 @@
                                         <input type="text" class="form-control" id="titulo" name="titulo" required>
                                     </div>
                                 </div>
+                                 <div class="form-group">
+                                     <label for="tutor" class="col-md-4 control-label colorazul">Tutor</label>
+                                     <div class="col-md-6">
+                                         <input type="text" class="form-control" id="tutor" name="tutor" required>
+                                     </div>
+                                 </div>
+                                 <div class="form-group">
+                                    <label for="revisor" class="col-md-4 control-label colorazul">Revisor</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="revisor" name="revisor">
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                    <label for="equipo" class="col-md-4 control-label colorazul">Integrantes</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="equipo" name="equipo">
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label for="archivo" class="col-md-4 control-label colorazul">File input</label>
                                     <div class="col-md-6">

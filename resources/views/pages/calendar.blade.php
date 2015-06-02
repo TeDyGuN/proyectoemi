@@ -171,10 +171,14 @@
                         <small class="label pull-right bg-red">{{count($array)}}</small>
                     </a>
                 </li>
-                <li>
-                    <a href="{{url('sistema/nuevotrabajo')}}">
-                        <i class="fa fa-file-word-o"></i> <span>Nuevo Trabajo de Investigacion</span>
+                <li class="treeview">
+                    <a href="#">
+                         <i class="fa fa-file-word-o"></i> <span>Trabajo de Investigacion</span>
+                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
+                    <ul class="treeview-menu">
+                         <li><a href="{{url('sistema/nuevotrabajo')}}"><i class="fa fa-circle-o"></i>Nuevo Trabajo</a></li>
+                    </ul>
                 </li>
                 @if(Auth::user()->type == 'Admin')
                     <li>
@@ -185,7 +189,7 @@
 
                 @endif
                 <li>
-                    <a href="{{url('calendar')}}">
+                    <a href="{{url('sistema/documentacion')}}">
                         <i class="fa fa-book"></i> <span>Documentacion</span>
                     </a>
                 </li>
@@ -325,12 +329,6 @@
 <!-- Page specific script -->
 <script type="text/javascript">
     $(function () {
-        console.log('{{$array[2]->start}}');
-        console.log('{{substr($array[2]->start, 0, -15)}}');
-        console.log('{{substr($array[2]->start, 5, -12)}}');
-        console.log('{{substr($array[2]->start, 8, -9)}}');
-        console.log('{{substr($array[2]->start, 11, -6)}}');
-        console.log('{{substr($array[2]->start, 14, -3)}}');;
         var base_url = 'http://localhost/proyectoemi/public';
         /* initialize the external events
          -----------------------------------------------------------------*/

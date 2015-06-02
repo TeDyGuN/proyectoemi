@@ -21,6 +21,10 @@ class TrabajoController extends Controller {
      * @param Request $request
      * @return string
      */
+    public function documentos()
+    {
+        return view('pages/Documentos');
+    }
     public function save(Request $request)
     {
 
