@@ -39,6 +39,7 @@ Route::group(['prefix'=> 'sistema', 'namespace' => 'Sistema'], function()
     Route::get('nuevotrabajo', 'TrabajoController@nuevotrabajo');
     Route::post('guardar', 'TrabajoController@save');
     Route::get('documentacion', 'TrabajoController@documentos');
+    Route::get('find', 'TrabajoController@buscar');
     Route::get('storage/{archivo}', function ($archivo) {
         $public_path = public_path();
         $url = $public_path.'/storage/'.$archivo;

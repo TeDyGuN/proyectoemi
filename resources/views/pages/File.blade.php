@@ -1,7 +1,7 @@
 @extends('admin')
 @section('titulo', 'Nuevo Trabajo')
 @section('headerpage')
-    <section class="content-header">
+<section class="content-header" xmlns="http://www.w3.org/1999/html">
         <h1 class="colorazul">
             Dashboard
             <small class="colorazul">Nuevo Trabajo de Investigacion</small>
@@ -15,8 +15,8 @@
 @section('content')
 
     <!-- Small boxes (Stat box) -->
-    <div class="container-fluid">
-        <div class="row">
+    <div class="container-fluid" ng-app="TrabajoApp">
+        <div class="row" ng-controller="SearchCrtl">
             <div class="col-md-5 col-md-offset-4">
                 <div class="panel panel-default" id="headeremi">
                     <div class="panel-heading text-center ">Registro de Nuevo Trabajo de Investigacion</div>
@@ -39,10 +39,21 @@
                                         <input type="text" class="form-control" id="titulo" name="titulo" required>
                                     </div>
                                 </div>
-                                 <div class="form-group">
+                                 <div class="form-group" >
                                      <label for="tutor" class="col-md-4 control-label colorazul">Tutor</label>
                                      <div class="col-md-6">
-                                         <input type="text" class="form-control" id="tutor" name="tutor" required>
+
+                                         <input type="text" class="form-control" id="tutor" name="tutor" required ng-model="searchInput" ng-change="search()">
+                                         <div class="col-md-12 list-group" id="lista">
+                                            <a href="#" class="list-group-item" ng-repeat="user in users" ng-click="removeTask(user);">
+                                                <h4 class="list-group-item-heading" >
+                                                    @{{ user.first_name + ' ' + user.last_name }}
+                                                </h4>
+                                                <p>
+                                                    @{{ user.email }}
+                                                </p>
+                                            </a>
+                                         </div>
                                      </div>
                                  </div>
                                  <div class="form-group">
@@ -82,4 +93,36 @@
             </div>
         </div>
     </div>
+@endsection
+@section('addscripts')
+<script type="text/javascript">
+'use strict';
+    var TrabajoApp = angular.module('TrabajoApp', []);
+         TrabajoApp.controller('SearchCrtl', function($scope, $http){
+             $scope.search = function() {
+                $http.get('find',{
+                    params: {nombre: $scope.searchInput}
+                }).success(function (data){
+                    $scope.users = data;
+                });
+             };
+
+             $scope.removeTask = function(user){
+                 var lista = $('#lista');
+                 lista.css({display: "none"});
+                 $('#tutor').attr('value', user.first_name +' '+user.last_name);
+              };
+         });
+
+    /*$('#tutor').blur(function(){
+        var lista = $('#lista');
+        lista.css({display: "none"});
+
+    });*/
+    $('#tutor').click(function(){
+        var lista = $('#lista');
+        lista.css({display: "block"});
+
+    });
+</script>
 @endsection

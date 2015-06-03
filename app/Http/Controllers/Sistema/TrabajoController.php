@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Sistema;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -59,5 +60,11 @@ class TrabajoController extends Controller {
         \DB::insert('insert into trabajo (titulo, nombreArchivo, rutaArchivo, user_id)
                           values (?, ?, ?, ?)', [$titulo, $nombre, $url, Auth::user()->id]);
         return redirect('sistema/nuevotrabajo')->with(['success' => ' ']);
+    }
+    public function buscar()
+    {
+        $name = Input::get('nombre');
+        $usuarios = User::where('last_name', 'LIKE', '%' . $name . '%')->where('type', '=', 'Docente')->take(3)->get();
+        return \Illuminate\Support\Facades\Response::json($usuarios);
     }
 }
