@@ -32,179 +32,19 @@
 <body class="skin-blue sidebar-mini">
 <div class="wrapper">
 
-    <header class="main-header">
-        <!-- Logo -->
-        <a href="index2.html" class="logo"><b>EMI </b>SISTEMAS</a>
-        <!-- Header Navbar: style can be found in header.less -->
-        <nav class="navbar navbar-static-top" role="navigation">
-            <!-- Sidebar toggle button-->
-            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                <span class="sr-only">Toggle navigation</span>
-            </a>
-            <div class="navbar-custom-menu">
-                <ul class="nav navbar-nav">
-                    <!-- Messages: style can be found in dropdown.less-->
-
-                    <!-- Tasks: style can be found in dropdown.less -->
-                    <li class="dropdown tasks-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-flag-o"></i>
-                            <span class="label label-danger">9</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have 9 tasks</li>
-                            <li>
-                                <!-- inner menu: contains the actual data -->
-                                <ul class="menu">
-                                    <li><!-- Task item -->
-                                        <a href="#">
-                                            <h3>
-                                                Design some buttons
-                                                <small class="pull-right">20%</small>
-                                            </h3>
-                                            <div class="progress xs">
-                                                <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">20% Complete</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li><!-- end task item -->
-                                    <li><!-- Task item -->
-                                        <a href="#">
-                                            <h3>
-                                                Create a nice theme
-                                                <small class="pull-right">40%</small>
-                                            </h3>
-                                            <div class="progress xs">
-                                                <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">40% Complete</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li><!-- end task item -->
-                                    <li><!-- Task item -->
-                                        <a href="#">
-                                            <h3>
-                                                Some task I need to do
-                                                <small class="pull-right">60%</small>
-                                            </h3>
-                                            <div class="progress xs">
-                                                <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">60% Complete</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li><!-- end task item -->
-                                    <li><!-- Task item -->
-                                        <a href="#">
-                                            <h3>
-                                                Make beautiful transitions
-                                                <small class="pull-right">80%</small>
-                                            </h3>
-                                            <div class="progress xs">
-                                                <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">80% Complete</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li><!-- end task item -->
-                                </ul>
-                            </li>
-                            <li class="footer">
-                                <a href="#">View all tasks</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown user user-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="{{ asset('dist/img/user2-160x160.png') }}" class="user-image" alt="User Image"/>
-                            <span class="hidden-xs">{{  Auth::user()->first_name.' '.Auth::user()->last_name }}</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <!-- User image -->
-                            <div class="form-group">
-                                <div class="col-md-2">
-                                    <li><a href="{{ url('logout') }}">Salir</a></li>
-                                </div>
-                            </div>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+    @include('header')
     <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar">
-        <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar">
-            <!-- Sidebar user panel -->
-            <div class="user-panel">
-                <div class="pull-left image">
-                    <img src="{{ asset('dist/img/user2-160x160.png') }}" class="img-circle" alt="User Image" />
-                </div>
-                <div class="pull-left info">
-                    <p>{{ Auth::user()->first_name.' '.Auth::user()->last_name }}</p>
-                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-                </div>
-            </div>
-            <!-- search form -->
-            <form action="#" method="get" class="sidebar-form">
-                <div class="input-group">
-                    <input type="text" name="q" class="form-control" placeholder="Search..."/>
-                <span class="input-group-btn">
-                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-                </span>
-                </div>
-            </form>
-            <!-- /.search form -->
-            <!-- sidebar menu: : style can be found in sidebar.less -->
-            <ul class="sidebar-menu">
-                <li class="header">MAIN NAVIGATION</li>
-                <li class="active treeview">
-                    <a href="{{ url('home') }}">
-                        <i class="fa fa-dashboard"></i> <span>Panel Principal</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{url('calendar')}}">
-                        <i class="fa fa-calendar"></i> <span>Calendario</span>
-                        <small class="label pull-right bg-red">{{count($array)}}</small>
-                    </a>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                         <i class="fa fa-file-word-o"></i> <span>Trabajo de Investigacion</span>
-                         <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                         <li><a href="{{url('sistema/nuevotrabajo')}}"><i class="fa fa-circle-o"></i>Nuevo Trabajo</a></li>
-                    </ul>
-                </li>
-                @if(Auth::user()->type == 'Admin')
-                    <li>
-                        <a href="{{route('admin.users.index')}}">
-                            <i class="fa fa-area-chart"></i> <span>Usuarios Registrados</span>
-                        </a>
-                    </li>
-
-                @endif
-                <li>
-                    <a href="{{url('sistema/documentacion')}}">
-                        <i class="fa fa-book"></i> <span>Documentacion</span>
-                    </a>
-                </li>
-            </ul>
-        </section>
-        <!-- /.sidebar -->
-    </aside>
+    @include('sidebar')
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>
-                Calendario
-                <small>Panel de Control</small>
+            <h1 style="color: #144571;
+                           font-size: 1.7em;
+                           font-weight: bold;">
+                SIS|TRAIN
+                <small>Calendario</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -301,7 +141,7 @@
         <div class="pull-right hidden-xs">
             <b>Version</b> 0.1
         </div>
-        <strong>Copyright &copy; 2015 <a href="#">Ted Carrasco</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2015 <a href="#">Ted Carrasco</a>.</strong>®
     </footer>
 </div><!-- ./wrapper -->
 

@@ -11,22 +11,13 @@
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
-        <!-- search form -->
-        <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search..."/>
-                <span class="input-group-btn">
-                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-                </span>
-            </div>
-        </form>
-        <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
-            <li class="header">MAIN NAVIGATION</li>
+            <li class="header">Navegacion Principal</li>
             <li class="active treeview">
-                <a href="#">
+                <a href="{{ url('home') }}">
                     <i class="fa fa-dashboard"></i> <span>Panel Principal</span>
+
                 </a>
             </li>
             <li>
@@ -41,13 +32,19 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{url('sistema/nuevotrabajo')}}"><i class="fa fa-circle-o"></i>Nuevo Trabajo</a></li>
+                     <li><a href="{{url('sistema/nuevotrabajo')}}"><i class="fa fa-circle-o"></i>Nuevo Trabajo</a></li>
+                     <li><a href="{{url('sistema/listatrabajos')}}"><i class="fa fa-circle-o"></i>Lista Trabajo</a></li>
                 </ul>
             </li>
             @if(Auth::user()->type == 'Admin')
             <li>
                 <a href="{{route('admin.users.index')}}">
                     <i class="fa fa-area-chart"></i> <span>Usuarios Registrados</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{url('admin/nuevalinea')}}">
+                    <i class="fa fa-plus-square"></i> <span>Nueva Linea de Investigacion</span>
                 </a>
             </li>
             <li>

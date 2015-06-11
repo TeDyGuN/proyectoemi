@@ -2,9 +2,9 @@
 @section('titulo', 'Usuarios Registrados')
 @section('headerpage')
     <section class="content-header">
-        <h1>
-            Usuarios
-            <small>Listado</small>
+        <h1 class="colorazul">
+            SIS|TRAIN
+            <small>Usuarios Listado</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>

@@ -3,13 +3,9 @@
 @section('headerpage')
     <section class="content-header">
         <h1 class="colorazul">
-            Dashboard
+            SIS|TRAIN
             <small class="colorazul">Documentacion</small>
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Panel de Control</li>
-        </ol>
     </section>
 @endsection
 @section('content')
