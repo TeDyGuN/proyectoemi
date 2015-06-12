@@ -44,6 +44,11 @@ Route::group(['before' => 'is_admin', 'prefix'=> 'admin', 'namespace' => 'Admin'
 Route::group(['prefix'=> 'sistema', 'namespace' => 'Sistema'], function()
 {
     Route::get('nuevotrabajo', 'TrabajoController@nuevotrabajo');
+    Route::get('mitrabajo', 'SeguimientoController@mistrabajos');
+    Route::get('revision', 'SeguimientoController@revision');
+    Route::get('trabajo/{id}', 'SeguimientoController@seguimiento');
+    Route::get('revision/trabajo/{id}', 'SeguimientoController@revision_seguimiento');
+    Route::post('revision/guardar', 'SeguimientoController@saveRevision');
     Route::post('guardar', 'TrabajoController@save');
     Route::get('documentacion', 'TrabajoController@documentos');
     Route::get('listatrabajos', 'TrabajoController@listadoTrabajos');

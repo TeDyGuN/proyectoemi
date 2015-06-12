@@ -33,6 +33,8 @@
                 <ul class="treeview-menu">
                      <li><a href="{{url('sistema/nuevotrabajo')}}"><i class="fa fa-circle-o"></i>Nuevo Trabajo</a></li>
                      <li><a href="{{url('sistema/listatrabajos')}}"><i class="fa fa-circle-o"></i>Lista Trabajo</a></li>
+                     <li><a href="{{url('sistema/mitrabajo')}}"><i class="fa fa-circle-o"></i>Mis Trabajos</a></li>
+                     <li><a href="{{url('sistema/revision')}}"><i class="fa fa-circle-o"></i>Revisiones</a></li>
                 </ul>
             </li>
             @if(Auth::user()->type == 'Admin')
