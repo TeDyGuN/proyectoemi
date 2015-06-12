@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller {
 
 	/*
@@ -30,7 +32,16 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+        $eventos =  \DB::table('eventos')
+            ->select('titulo_evento')
+            ->where('user_id', '=', Auth::user()->id)
+            ->take(4)
+            ->get();
+        $datos['cTrabajo']= \DB::table('trabajo')->count();
+        $datos['cCalendar'] = \DB::table('eventos')
+                            ->where('user_id', '=', Auth::user()->id)
+                            ->count();
+		return view('home', compact('datos', 'eventos'));
 	}
 
 }

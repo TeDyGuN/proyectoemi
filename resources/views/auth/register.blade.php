@@ -46,6 +46,7 @@
                             <div class="col-md-6">
                                 <select class="form-control" name="type">
                                     <option value="estudiante">Estudiante</option>
+                                    <option value="estudiante">Persona Externa</option>
                                     <option value="docente">Docente</option>
                                 </select>
                             </div>

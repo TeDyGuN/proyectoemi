@@ -17,13 +17,12 @@
             <li class="active treeview">
                 <a href="{{ url('home') }}">
                     <i class="fa fa-dashboard"></i> <span>Panel Principal</span>
-
                 </a>
             </li>
             <li>
                 <a href="{{url('calendar')}}">
                     <i class="fa fa-calendar"></i> <span>Calendario</span>
-                    <small class="label pull-right bg-red">3</small>
+                    <small class="label pull-right bg-red">{{$datos['cCalendar']}}</small>
                 </a>
             </li>
             <li class="treeview">
@@ -48,7 +47,7 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="{{url('admin/reportes/index')}}">
                     <i class="fa fa-area-chart"></i><span>Reportes</span>
                 </a>
             </li>

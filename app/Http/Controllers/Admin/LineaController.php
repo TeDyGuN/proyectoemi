@@ -5,12 +5,22 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Validator;
 class LineaController extends Controller{
     public function linea()
     {
-        return view('admin/nuevaLinea');
+        $eventos =  \DB::table('eventos')
+            ->select('titulo_evento')
+            ->where('user_id', '=', Auth::user()->id)
+            ->take(4)
+            ->get();
+        $datos['cTrabajo']= \DB::table('trabajo')->count();
+        $datos['cCalendar'] = \DB::table('eventos')
+            ->where('user_id', '=', Auth::user()->id)
+            ->count();
+        return view('admin/nuevaLinea',compact('eventos','datos'));
     }
     public function save(Request $request)
     {

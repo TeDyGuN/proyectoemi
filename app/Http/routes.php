@@ -35,6 +35,11 @@ Route::group(['before' => 'is_admin', 'prefix'=> 'admin', 'namespace' => 'Admin'
     Route::Resource('users', 'UsersController');
     Route::get('nuevalinea', 'LineaController@linea');
     Route::post('guardar', 'LineaController@save');
+    Route::get('reportes/usuarios', 'Reportes\ReportesController@usuarios');
+    Route::get('reportes/trabajos', 'Reportes\ReportesController@trabajos');
+    Route::get('reportes/lineas', 'Reportes\ReportesController@lineas');
+    Route::get('reportes/index', 'Reportes\ReportesController@index');
+    Route::post('reportes/guardar', 'Reportes\ReportesController@save');
 });
 Route::group(['prefix'=> 'sistema', 'namespace' => 'Sistema'], function()
 {

@@ -33,7 +33,16 @@ class FullCalendarController extends Controller{
     }
     public function getCalendar()
     {
+        $eventos =  \DB::table('eventos')
+            ->select('titulo_evento')
+            ->where('user_id', '=', Auth::user()->id)
+            ->take(4)
+            ->get();
+        $datos['cTrabajo']= \DB::table('trabajo')->count();
+        $datos['cCalendar'] = \DB::table('eventos')
+            ->where('user_id', '=', Auth::user()->id)
+            ->count();
         $array = \DB::table('eventos')->where('user_id', '=', Auth::user()->id)->get();
-        return view('pages/calendar', compact('array'));
+        return view('pages/calendar', compact('array','datos','eventos'));
     }
 }

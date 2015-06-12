@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Input;
-
 use Auth;
 use Validator;
 
@@ -18,7 +17,16 @@ class TrabajoController extends Controller {
         $result = \DB::table('lineaInvestigacion')
             ->select('id','Categoria')
             ->get();
-        return view('pages/File', compact('result'));
+        $eventos =  \DB::table('eventos')
+            ->select('titulo_evento')
+            ->where('user_id', '=', Auth::user()->id)
+            ->take(4)
+            ->get();
+        $datos['cTrabajo']= \DB::table('trabajo')->count();
+        $datos['cCalendar'] = \DB::table('eventos')
+            ->where('user_id', '=', Auth::user()->id)
+            ->count();
+        return view('pages/File', compact('result', 'eventos', 'datos'));
     }
 
     /**
@@ -27,7 +35,16 @@ class TrabajoController extends Controller {
      **/
     public function documentos()
     {
-        return view('pages/Documentos');
+        $eventos =  \DB::table('eventos')
+            ->select('titulo_evento')
+            ->where('user_id', '=', Auth::user()->id)
+            ->take(4)
+            ->get();
+        $datos['cTrabajo']= \DB::table('trabajo')->count();
+        $datos['cCalendar'] = \DB::table('eventos')
+            ->where('user_id', '=', Auth::user()->id)
+            ->count();
+        return view('pages/Documentos',compact('eventos', 'datos'));
     }
     public function listadoTrabajos()
     {
@@ -36,8 +53,16 @@ class TrabajoController extends Controller {
 //            ->join('lineaInvestigacion', 'lineaInvestigacion.id', '=', 'linea_id')
             ->select('trabajo.id', 'trabajo.titulo', 'trabajo.rutaArchivo', 'trabajo.Descripcion', 'users.first_name', 'users.last_name', 'users.email')
             ->get();
-
-        return view('pages/listadoTrabajos', compact('result'));
+        $eventos =  \DB::table('eventos')
+            ->select('titulo_evento')
+            ->where('user_id', '=', Auth::user()->id)
+            ->take(4)
+            ->get();
+        $datos['cTrabajo']= \DB::table('trabajo')->count();
+        $datos['cCalendar'] = \DB::table('eventos')
+            ->where('user_id', '=', Auth::user()->id)
+            ->count();
+        return view('pages/listadoTrabajos', compact('result', 'eventos', 'datos'));
     }
     public function save(Request $request)
     {

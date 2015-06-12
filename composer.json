@@ -11,7 +11,7 @@
 		"phpunit/phpunit": "~4.0",
 		"phpspec/phpspec": "~2.1",
         "fzaninotto/faker": "1.5.*@dev",
-        "thujohn/pdf": "^1.0"
+        "barryvdh/laravel-dompdf": "0.5.*"
 	},
 	"autoload": {
 		"classmap": [

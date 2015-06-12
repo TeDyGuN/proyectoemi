@@ -4,14 +4,25 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class UsersController extends Controller {
 
 	public function index()
 	{
+        $eventos =  \DB::table('eventos')
+            ->select('titulo_evento')
+            ->where('user_id', '=', Auth::user()->id)
+            ->take(4)
+            ->get();
+        $datos['cTrabajo']= \DB::table('trabajo')->count();
+        $datos['cCalendar'] = \DB::table('eventos')
+            ->where('user_id', '=', Auth::user()->id)
+            ->count();
 		$users = User::paginate();
-        return view('admin.users.index', compact('users'));
+
+        return view('admin.users.index', compact('users', 'eventos', 'datos'));
 	}
 
 	public function create()
