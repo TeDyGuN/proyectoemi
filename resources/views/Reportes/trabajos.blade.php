@@ -21,8 +21,7 @@
                 echo("<td>".$f->id."</td>");
                 echo("<td>".$f->titulo."</td>");
                 echo("<td>".$f->Descripcion."</td>");
-                echo("<td>".$f->last_name."</td>");
-                echo("<td>".$f->first_name."</td>");
+                echo("<td>".$f->first_name.' '.$f->last_name."</td>");
                 echo("<td>".$f->email."</td>");
                 echo("</tr>");
             }

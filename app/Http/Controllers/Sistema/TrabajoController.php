@@ -55,7 +55,7 @@ class TrabajoController extends Controller {
             ->get();
         $eventos =  \DB::table('eventos')
             ->select('titulo_evento')
-            ->where('user_id', '=', Auth::user()->id)
+            ->where('user_id', '=', \Illuminate\Support\Facades\Auth::user()->id)
             ->take(4)
             ->get();
         $datos['cTrabajo']= \DB::table('trabajo')->count();

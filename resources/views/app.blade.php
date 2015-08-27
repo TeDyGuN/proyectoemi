@@ -53,8 +53,6 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="{{ URL::route('index')  }}" class="glyphicon glyphicon-home">Inicio</a></li>
-                    <li><a href="#" class="glyphicon glyphicon-book">Recursos</a></li>
-                    <li><a href="#" class="glyphicon glyphicon-question-sign">F.A.Q</a></li>
                 </ul>
                 @if(Auth::guest())
                     <ul class="nav navbar-nav navbar-right">

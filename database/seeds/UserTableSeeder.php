@@ -21,15 +21,36 @@ class UserTableSeeder extends Seeder{
                 'type'      => 'Estudiante'
             ));
         }
-        for($i = 0; $i < 10; $i++){
+
             \DB::table('users')->insert(array(
-                'first_name'=> $faker->firstName,
-                'last_name' => $faker->lastName,
-                'email'     => $faker->unique()->email,
-                'password'  => \Hash::make('secret'),
-                'type'      => 'Docente'
+                'first_name'=> 'Alejandro',
+                'last_name' => 'Zambrana',
+                'email'     => 'alejo2@hotmail.com',
+                'password'  => \Hash::make('secreto'),
+                'type'      => 'docente'
             ));
-        }
+        \DB::table('users')->insert(array(
+            'first_name'=> 'Cynthia',
+            'last_name' => 'Rodriguez',
+            'email'     => 'cinti2@hotmail.com',
+            'password'  => \Hash::make('secreto'),
+            'type'      => 'docente'
+        ));
+        \DB::table('users')->insert(array(
+            'first_name'=> 'Luis',
+            'last_name' => 'Ruiz',
+            'email'     => 'luisruiz2@hotmail.com',
+            'password'  => \Hash::make('secreto'),
+            'type'      => 'docente'
+        ));
+        \DB::table('users')->insert(array(
+            'first_name'=> 'Osamu',
+            'last_name' => 'Yokosaki',
+            'email'     => 'osumayoko2@hotmail.com',
+            'password'  => \Hash::make('secreto'),
+            'type'      => 'docente'
+        ));
+
 
     }
 }
